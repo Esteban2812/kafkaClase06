@@ -25,7 +25,7 @@
 			</form>
 		</div>
 		<div class="col-5">
-			<table class="table table-bordered">
+			<table class="table table-bordered" *ngIf="recetas.length; else noHayRecetas">
 				<thead class="thead-dark">
 					<tr>
 						<th>Foto</th>
@@ -39,6 +39,9 @@
 					<td>{{receta.titulo}}</td>
 				</tr>
 			</table>
+			<ng-template #noHayRecetas>
+				<h3>No hay recetas ingresadas</h3>
+			</ng-template>
 		</div>
 	</div>
 </div>
