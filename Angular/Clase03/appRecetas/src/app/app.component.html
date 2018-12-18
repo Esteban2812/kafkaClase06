@@ -12,7 +12,7 @@
 					<textarea cols="30" rows="5" class="form-control" placeholder="Preparacion" #preparacion></textarea>
 				</div>
 				<div class="form-group">
-					<input type="file" class="form-control">
+					<input type="file" class="form-control" (change)="seleccionarImagen($event)">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Tiempo (min.)" #tiempo>
@@ -22,6 +22,19 @@
 				</div>
 			</form>
 		</div>
-		<div class="col-5"></div>
+		<div class="col-5">
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>Foto</th>
+						<th>Titulo</th>
+					</tr>
+				</thead>
+				<tr *ngFor="let receta of recetas">
+					<td></td>
+					<td>{{receta.titulo}}</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </div>

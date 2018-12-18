@@ -8,10 +8,26 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	recetas: Array<{ titulo: string, ingredientes: string, preparacion: string, foto: string, tiempo: number }> = []
 
+	imagen: string
+
 	agregarReceta(titulo: string, ingredientes: string, preparacion: string, tiempo: number) {
 
 		const receta = { titulo, ingredientes, preparacion, tiempo, foto: "" }
 
 		this.recetas.push(receta)
+	}
+
+	seleccionarImagen(evt) {
+		//console.log(evt.target.files[0])
+
+		const fs: FileReader = new FileReader()
+		fs.onloadend = (resultado) => {
+			this.imagen = (resultado.currentTarget as FileReader).result
+
+			//console.log(resultado.currentTarget)
+		}
+
+		fs.readAsDataURL(evt.target.files[0])
+
 	}
 }
