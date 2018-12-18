@@ -1,47 +1,10 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-5">
-			<form>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Titulo" #titulo>
-				</div>
-				<div class="form-group">
-					<textarea cols="30" rows="5" class="form-control" placeholder="Ingredientes" #ingredientes></textarea>
-				</div>
-				<div class="form-group">
-					<textarea cols="30" rows="5" class="form-control" placeholder="Preparacion" #preparacion></textarea>
-				</div>
-				<div class="form-group">
-					<input type="file" class="form-control" (change)="seleccionarImagen($event)" style="display:none" #foto>
-					<button type="button" class="btn btn-outline-success" (click)="foto.click()">Imagen</button>
-					<img [src]="imagen" style="width:100%;max-width:100px;display: inline-block;margin-left:10px" *ngIf="imagen">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Tiempo (min.)" #tiempo>
-				</div>
-				<div class="form-group">
-					<button type="button" class="btn btn-primary btn-block" (click)="agregarReceta(titulo.value, ingredientes.value, preparacion.value, tiempo.value)">Agregar</button>
-				</div>
-			</form>
+			<app-formulario (onAgregar)="agregar($event)"></app-formulario>
 		</div>
 		<div class="col-5">
-			<table class="table table-bordered" *ngIf="recetas.length; else noHayRecetas">
-				<thead class="thead-dark">
-					<tr>
-						<th>Foto</th>
-						<th>Titulo</th>
-					</tr>
-				</thead>
-				<tr *ngFor="let receta of recetas">
-					<td>
-						<img [src]="receta.foto" style="width:100%;max-width:220px">
-					</td>
-					<td>{{receta.titulo}}</td>
-				</tr>
-			</table>
-			<ng-template #noHayRecetas>
-				<h3>No hay recetas ingresadas</h3>
-			</ng-template>
+			<app-listado [listadoRecetas]="recetas"></app-listado>
 		</div>
 	</div>
 </div>

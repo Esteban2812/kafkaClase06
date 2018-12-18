@@ -1,0 +1,17 @@
+<table class="table table-bordered" *ngIf="recetas.length; else noHayRecetas">
+	<thead class="thead-dark">
+		<tr>
+			<th>Foto</th>
+			<th>Titulo</th>
+		</tr>
+	</thead>
+	<tr *ngFor="let receta of recetas">
+		<td>
+			<img [src]="receta.foto" style="width:100%;max-width:220px">
+		</td>
+		<td>{{receta.titulo}}</td>
+	</tr>
+</table>
+<ng-template #noHayRecetas>
+	<h3>No hay recetas ingresadas</h3>
+</ng-template>
