@@ -12,9 +12,11 @@ export class AppComponent {
 
 	agregarReceta(titulo: string, ingredientes: string, preparacion: string, tiempo: number) {
 
-		const receta = { titulo, ingredientes, preparacion, tiempo, foto: "" }
+		const receta = { titulo, ingredientes, preparacion, tiempo, foto: this.imagen }
 
 		this.recetas.push(receta)
+
+		this.imagen = undefined
 	}
 
 	seleccionarImagen(evt) {
@@ -22,7 +24,7 @@ export class AppComponent {
 
 		const fs: FileReader = new FileReader()
 		fs.onloadend = (resultado) => {
-			this.imagen = (resultado.currentTarget as FileReader).result
+			this.imagen = (resultado.currentTarget as FileReader).result as string
 
 			//console.log(resultado.currentTarget)
 		}

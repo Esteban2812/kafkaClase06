@@ -12,7 +12,9 @@
 					<textarea cols="30" rows="5" class="form-control" placeholder="Preparacion" #preparacion></textarea>
 				</div>
 				<div class="form-group">
-					<input type="file" class="form-control" (change)="seleccionarImagen($event)">
+					<input type="file" class="form-control" (change)="seleccionarImagen($event)" style="display:none" #foto>
+					<button type="button" class="btn btn-outline-success" (click)="foto.click()">Imagen</button>
+					<img [src]="imagen" style="width:100%;max-width:100px;display: inline-block;margin-left:10px">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Tiempo (min.)" #tiempo>
@@ -31,7 +33,9 @@
 					</tr>
 				</thead>
 				<tr *ngFor="let receta of recetas">
-					<td></td>
+					<td>
+						<img [src]="receta.foto" style="width:100%;max-width:220px">
+					</td>
 					<td>{{receta.titulo}}</td>
 				</tr>
 			</table>
