@@ -1,0 +1,31 @@
+<table class="table table-bordered">
+	<thead class="thead-dark">
+		<th>Afiche</th>
+		<th>Titulo</th>
+	</thead>
+	<ng-container *ngFor="let pelicula of peliculas">
+		<tr>
+			<td>
+				<img [src]="pelicula.afiche" alt="">
+			</td>
+			<td>
+				{{pelicula.titulo}}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button type="button" class="btn-outline-warning" (click)="pelicula.visualizar = !pelicula.visualizar">Detalle</button>
+				<div *ngIf="pelicula.visualizar">
+					<strong>
+						<em>Director</em>
+					</strong>
+					<p>{{pelicula.director}}</p>
+					<strong>
+						<em>Anno</em>
+					</strong>
+					<p>{{pelicula.anno}}</p>
+				</div>
+			</td>
+		</tr>
+	</ng-container>
+</table>

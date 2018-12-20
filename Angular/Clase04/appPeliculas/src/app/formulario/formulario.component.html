@@ -1,0 +1,18 @@
+<form>
+	<div class="form-group">
+		<input type="text" class="form-control" #titulo placeholder="Titulo">
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" #director placeholder="Director">
+	</div>
+	<div class="form-group">
+		<input type="file" #afiche style="display:none" (change)="seleccionArchivo($event.target.files[0])">
+		<button type="button" class="btn-outline-danger" (click)="afiche.click()">Afiche</button>
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" #anno placeholder="Anno">
+	</div>
+	<div class="form-group">
+		<button type="button" class="btn btn-block btn-success" (click)="insertar(titulo.value, director.value, anno.value)">Insertar</button>
+	</div>
+</form>
