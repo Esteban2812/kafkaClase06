@@ -8,11 +8,12 @@ import { RecetaService } from './receta.service';
 import { LogService } from './log.service';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Route } from '@angular/router'
+import { AuthGuard } from './auth.guard';
 
 const rutas: Route[] = [
 	{ path: "", component: LoginComponent },
 	{
-		path: "recetas", children: [
+		path: "recetas", canActivate: [AuthGuard], children: [
 			{ path: "", component: ListadoComponent },
 			{ path: "nuevo", component: FormularioComponent }
 		]
