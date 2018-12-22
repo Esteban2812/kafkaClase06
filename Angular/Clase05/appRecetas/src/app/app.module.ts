@@ -11,8 +11,20 @@ import { RouterModule, Route } from '@angular/router'
 
 const rutas: Route[] = [
 	{ path: "", component: LoginComponent },
-	{ path: "recetas", component: ListadoComponent },
-	{ path: "recetas/nuevo", component: FormularioComponent }
+	{
+		path: "recetas", children: [
+			{ path: "", component: ListadoComponent },
+			{ path: "nuevo", component: FormularioComponent }
+		]
+	}
+	/* 	{ path: "recetas", component: ListadoComponent },
+		{ path: "recetas/nuevo", component: FormularioComponent } */
+	/* 	{
+			path: "recetas", component: ListadoComponent, children: [
+				{ path: "", component: ListadoComponent },
+				{ path: "nuevo", component: FormularioComponent }
+			]
+		} */
 ]
 
 @NgModule({

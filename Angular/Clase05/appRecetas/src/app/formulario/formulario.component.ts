@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IReceta } from '../receta.interface';
 import { RecetaService } from '../receta.service';
 import { LogService } from '../log.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-formulario',
@@ -12,7 +13,7 @@ export class FormularioComponent implements OnInit {
 
 	//@Output() onAgregar = new EventEmitter<IReceta>()
 
-	constructor(private recetaService: RecetaService/*, private logService: LogService*/) { }
+	constructor(private recetaService: RecetaService, private router: Router/*, private logService: LogService*/) { }
 
 	ngOnInit() {
 	}
@@ -28,6 +29,7 @@ export class FormularioComponent implements OnInit {
 		//this.logService.escribir("Nueva receta", "error")
 
 		this.imagen = undefined
+		this.router.navigate(["recetas"])
 	}
 
 	seleccionarImagen(evt) {
