@@ -9,13 +9,14 @@ import { LogService } from './log.service';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Route } from '@angular/router'
 import { AuthGuard } from './auth.guard';
-
+import { FormsModule } from "@angular/forms"
+import { GuardadoGuard } from './guardado.guard';
 const rutas: Route[] = [
 	{ path: "", component: LoginComponent },
 	{
-		path: "recetas", canActivate: [AuthGuard], children: [
+		path: "recetas", canActivateChild: [AuthGuard], children: [
 			{ path: "", component: ListadoComponent },
-			{ path: "nuevo", component: FormularioComponent }
+      { path: "nuevo", component: FormularioComponent, canActivate:[AuthGuard],canDeactivate:[GuardadoGuard] }
 		]
 	}
 	/* 	{ path: "recetas", component: ListadoComponent },
@@ -33,11 +34,13 @@ const rutas: Route[] = [
 		AppComponent,
 		FormularioComponent,
 		ListadoComponent,
-		LoginComponent
+    LoginComponent
+
 	],
 	imports: [
 		BrowserModule,
-		RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    FormsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

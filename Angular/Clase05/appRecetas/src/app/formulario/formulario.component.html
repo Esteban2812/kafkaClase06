@@ -1,12 +1,12 @@
 <form>
 	<div class="form-group">
-		<input type="text" class="form-control" placeholder="Titulo" #titulo>
+		<input type="text" class="form-control" placeholder="Titulo" [(ngModel)]="recetaModificada.titulo" name="titulo">
 	</div>
 	<div class="form-group">
-		<textarea cols="30" rows="5" class="form-control" placeholder="Ingredientes" #ingredientes></textarea>
+		<textarea cols="30" rows="5" class="form-control" placeholder="Ingredientes" [(ngModel)]="recetaModificada.ingredientes" name="ingredientes"></textarea>
 	</div>
 	<div class="form-group">
-		<textarea cols="30" rows="5" class="form-control" placeholder="Preparacion" #preparacion></textarea>
+		<textarea cols="30" rows="5" class="form-control" placeholder="Preparacion" [(ngModel)]="recetaModificada.preparacion"></textarea>
 	</div>
 	<div class="form-group">
 		<input type="file" class="form-control" (change)="seleccionarImagen($event)" style="display:none" #foto>
@@ -14,9 +14,9 @@
 		<img [src]="imagen" style="width:100%;max-width:100px;display: inline-block;margin-left:10px" *ngIf="imagen">
 	</div>
 	<div class="form-group">
-		<input type="text" class="form-control" placeholder="Tiempo (min.)" #tiempo>
+		<input type="text" class="form-control" placeholder="Tiempo (min.)" [(ngModel)]="recetaModificada.tiempo">
 	</div>
 	<div class="form-group">
-		<button type="button" class="btn btn-primary btn-block" (click)="agregarReceta(titulo.value, ingredientes.value, preparacion.value, tiempo.value)">Agregar</button>
+		<button type="button" class="btn btn-primary btn-block" (click)="agregarReceta()">Agregar</button>
 	</div>
 </form>

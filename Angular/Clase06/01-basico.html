@@ -1,0 +1,61 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    
+<script>
+    const promesa = new Promise((resolve, reject)=>{
+        
+        setTimeout(()=>{
+            //resolve(["sergio","erika","carmen","beatriz","paolo"])
+            reject({
+                status:500,
+                message: "ususario  repetido"
+            })
+        }, 4000)
+    })
+
+/*    promesa.then(
+        (lista)=>{console.log(lista)},
+        (error)=>{console.log(error)
+    })*/
+    /*
+    promesa.then(
+        (list)=>{console.log(lista)}
+    )
+
+    promesa.catch(
+        (error)=> {console.log(error)}
+    )
+    */
+    //1ra funcions cuando funcion es cumplido sino en la segunda
+    promesa
+    .then(
+        (lista) => { 
+            console.log(lista)
+            
+            new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve("Comida")
+                },8000)
+            })
+            }
+    )
+    .then((plato)=>console.log(plato))
+    .catch(
+        (error)=> {console.log(error)}
+        
+    )
+    //esas son promesas encadenadas, teniendo como metodos informacion anterior
+    //por ejemplo una llamada a base de datos, la 1ra la 2da, las cuales tienen, que la promesa tiene que cumplirse
+</script>
+
+</body>
+</html>
